@@ -9,6 +9,12 @@ function App() {
   const [value, setValue] = useState(initialValue)
   return <div className="App">
     <Editor
+      onKeyDown={(event, editor, next) => {
+        if (event.key === 'c' && event.metaKey) {
+          alert(`you are copying "${editor.value.fragment.text}"`)
+        }
+        return next()
+      }}
       value={value}
       onChange={({ value }) => setValue(value)}
     />
